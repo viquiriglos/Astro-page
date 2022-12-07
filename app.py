@@ -58,6 +58,14 @@ COURSES = [
   'topics': 'How to analyze the Solar Return Chart',
   'duration': '3 hours',
   'price': '75 (U$S)'
+  },
+  {
+  'id':8,
+  'title':'Seminar 3',
+  'teacher': 'Robert',
+  'topics': 'World Astrology',
+  'duration': '3 hours',
+  'price': '75 (U$S)'
   }
 ] 
 
