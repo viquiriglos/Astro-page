@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from database import load_courses_from_db
+from database import load_courses_from_db, load_course_from_db
 
 
 app=Flask(__name__)
@@ -14,6 +14,13 @@ def hello_world():
 def courses_list():
   courses_db = load_courses_from_db()
   return jsonify(courses_db)
+
+@app.route("/courses/<id>")
+def show_course(id):
+  course_db = load_course_from_db(id)
+  if not course_db:
+    return "Not Found", 404
+  return render_template("coursepage.html", course = course_db)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
