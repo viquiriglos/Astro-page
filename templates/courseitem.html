@@ -4,10 +4,11 @@
     <div><b>Teacher: </b>{{course['teacher']}}</div>
     <div><b>Topics: </b>{{course['topics']}}</div>
     <div><b>Duration: </b>{{course['duration']}}</div>
-    <div><b>Price: </b>{{course['price']}}</div> 
+    <div><b>Price: </b>{{course['price']}} {{course['currency']}}</div> 
+    <div><b>Starting Date: </b>{{course['fecha']}}</div>
   </div>
   <div class='col-3'>
-    <a href="/courses/{{course['id']}}" type="button" class="btn btn-outline-primary">Sign In</a>
+    <a href="/courses/{{course['id']}}" type="button" class="btn btn-outline-primary">Sign Up</a>
   </div>  
   <hr />
  </div>

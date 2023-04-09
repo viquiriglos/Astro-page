@@ -11,11 +11,8 @@
     <div class='container'>
       <h1 class='text-center mt-2 mb-4' > Courses and Webinars </h1>
     
-      <h3 class="mb-2">{{course.title}}</h3>
-      <p class="lead mt-0">{{course.teacher}}</p>
-
-      <h4>Topics:</h4>
-      <p></p>
+      <h3 class="mb-2">{{course.title}} - {{course.topics}}</h3>
+      <p class="lead mt-0">Teacher: {{course.teacher}}</p>
 
       <h4>Starting Date:</h4>
       <p>{{course.fecha}}</p>
@@ -24,11 +21,15 @@
       <p>{{course.duration}}</p>
 
       <h4>Price:</h4>
-      <p>{{course.price}}</p>
+      <p>{{course.price}} {{course.currency}}</p>
 
       <h4>Requirements:</h4>
       <p> {{course.requirements}} </p>
-        
+
+      <h4>Starting Date:</h4>
+      <p> {{course.fecha}} </p>
+
+      {% include 'application_form.html' %}
     </div>
     
     {% include 'footer.html' %} 

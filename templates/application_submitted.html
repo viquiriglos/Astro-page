@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> {{course.title}} - Registration Form Submitted </title>
+    {% include 'bootstrap.html' %}
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    {% include 'banner.html' %}
+
+    <div class='container'>
+      <h4 class='text-center mt-2 mb-4' > Congratulations!  </h4>
+      
+      <p>Your Registration Form for {{course['title']}} at Astro World has been submitted. This is the registered contact information:</p>
+
+      <div class="mb-2">
+        <b>First Name/s:</b>
+        <p>{{application['first_names']}}</p>
+      </div>
+
+      <div class="mb-2">
+        <b>Last Name/s:</b>
+        <p>{{application['last_names']}}</p>
+      </div>
+
+      <div class="mb-2">
+        <b>E-mail:</b>
+        <p>{{application['email']}}</p>
+      </div>
+
+      <p>We will contact you soon by e-mail to send you the payment details. Your registration will be finished once you perform the first payment. </p>
+
+    </div>
+    
+    {% include 'footer.html' %} 
+    
+  </body>
+</html>

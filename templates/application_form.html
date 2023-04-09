@@ -1,0 +1,38 @@
+<h4>Application Form</h4>
+<form action="/courses/{{course['id']}}/apply" method="post">
+  <div class="mb-2">
+    <label>First Name/s</label>
+    <input type="text" required name="first_names" placeholder="Juan José"><br>
+  </div>
+
+  <div class="mb-2">
+    <label>Last Name/s</label>
+    <input type="text" required name="last_names" placeholder="Pérez García"><br>
+  </div>
+
+  <div class="mb-2">
+    <label>E-mail</label>
+    <input type="email" required name="email" placeholder="jjperezgarcia@gmail.com"><br>
+  </div>
+
+  <div class="mb-2">
+    <label>Birth Date </label>
+    <input type="date" required name="birth_date" placeholder="1980-05-27"><br>
+  </div>
+
+  <div class="mb-2">
+    <label>Birth Place (City, Country)</label>
+    <input type="text" name="birth_place" placeholder="Buenos Aires, Argentina"><br>
+  </div>
+  
+  <div class="mb-2">
+    <label>Tell us about you...</label>
+    <textarea name="observations" placeholder="hobbies, family, work, especial events in your life, etc "></textarea><br>
+  </div>
+
+  <div class="mb-2">
+    <input type="submit"><br>
+  </div>
+
+  
+</form>
