@@ -40,3 +40,12 @@ def add_application_to_db(course_id, data):
                  "birth_place" : data['birth_place'],
                  "observations" : data['observations']}
                 )
+
+def load_registered_person_from_db(id):
+  with engine.connect() as conn:
+    result = conn.execute(text("select * from applications where id = :val"),  {"val" : id})
+    rows = result.all()
+    if len(rows)==0:
+      return None
+    else:
+      return rows[0]._asdict()
