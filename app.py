@@ -6,6 +6,7 @@ import os
 
 app=Flask(__name__)
 
+# Home Page
 @app.route("/")
 def hello_world():
   courses_db = load_courses_from_db()
@@ -30,6 +31,7 @@ def show_registration_json(id):
   person = load_registered_person_from_db(id)
   return jsonify(person)
 
+# Rendering page for a specific course
 @app.route("/courses/<id>")
 def show_course(id):
   course_db = load_course_from_db(id)
@@ -45,6 +47,7 @@ app.config['XCAPTCHA_API_URL'] = "https://hcaptcha.com/1/api.js"
 app.config['XCAPTCHA_DIV_CLASS'] = "h-captcha"
 xcaptcha = XCaptcha(app=app)
 
+# rendering acknowledgement if application submitted properly
 @app.route("/courses/<id>/apply", methods=['post'])
 def apply_to_course(id):
   data = request.form
@@ -56,8 +59,9 @@ def apply_to_course(id):
                          application = data,
                          course = course_db)
   else:
+    # Message page when the captcha was not verified
     return render_template('captcha.html')
-    #'Please, get back and verify the captcha'
+    
 
 
 if __name__ == '__main__':
