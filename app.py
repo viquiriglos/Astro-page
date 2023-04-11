@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from database import load_courses_from_db, load_course_from_db, add_application_to_db, load_registered_person_from_db
+from flask_xcaptcha import XCaptcha
+import os
 
 
 app=Flask(__name__)
@@ -35,14 +37,27 @@ def show_course(id):
     return "Not Found", 404
   return render_template("coursepage.html", course = course_db)
 
+# captcha configuration
+app.config['XCAPTCHA_SITE_KEY'] = os.environ['CAPTCHA_SITE_KEY']
+app.config['XCAPTCHA_SECRET_KEY'] = os.environ['CAPTCHA_SECRET_KEY']
+app.config['XCAPTCHA_VERIFY_URL'] = "https://hcaptcha.com/siteverify"
+app.config['XCAPTCHA_API_URL'] = "https://hcaptcha.com/1/api.js"
+app.config['XCAPTCHA_DIV_CLASS'] = "h-captcha"
+xcaptcha = XCaptcha(app=app)
+
 @app.route("/courses/<id>/apply", methods=['post'])
 def apply_to_course(id):
   data = request.form
   course_db = load_course_from_db(id)
-  add_application_to_db(id, data)
-  return render_template('application_submitted.html',
+  
+  if xcaptcha.verify():
+    add_application_to_db(id, data)
+    return render_template('application_submitted.html',
                          application = data,
                          course = course_db)
+  else:
+    return render_template('captcha.html')
+    #'Please, get back and verify the captcha'
 
 
 if __name__ == '__main__':
