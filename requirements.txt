@@ -1,5 +1,5 @@
 Flask
 gunicorn
-sqlalchemy
+sqlalchemy==2.0.11
 pymysql
 Flask-xCaptcha
